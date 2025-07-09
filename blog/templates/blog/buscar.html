@@ -1,0 +1,26 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<h2>Buscar Posteos</h2>
+
+<form method="get" action="{% url 'buscar_posteo' %}">
+    <input type="text" name="q" placeholder="Buscar..." value="{{ query }}">
+    <button type="submit">Buscar</button>
+</form>
+
+<hr>
+
+<ul>
+    {% for posteo in resultados %}
+        <li>
+            <strong>{{ posteo.titulo }}</strong><br>
+            Autor: {{ posteo.autor.nombre }}<br>
+            Categoría: {{ posteo.categoria.nombre }}<br>
+            Fecha: {{ posteo.fecha|date:"d/m/Y H:i" }}<br>
+            {{ posteo.contenido|linebreaks }}
+        </li>
+    {% empty %}
+        <li>No se encontraron resultados.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

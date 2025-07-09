@@ -1,0 +1,19 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<h2>Lista de Posteos</h2>
+
+<ul>
+  {% for posteo in posteos %}
+    <li>
+      <strong>{{ posteo.titulo }}</strong><br>
+      Autor: {{ posteo.autor.nombre }}<br>
+      Categoría: {{ posteo.categoria.nombre }}<br>
+      Fecha: {{ posteo.fecha|date:"d/m/Y H:i" }}<br>
+      {{ posteo.contenido|linebreaks }}
+    </li>
+  {% empty %}
+    <li>No hay posteos aún.</li>
+  {% endfor %}
+</ul>
+{% endblock %}

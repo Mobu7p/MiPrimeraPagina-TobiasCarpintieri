@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Mi Blog{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="{% url 'lista_posteos' %}">Inicio</a> |
+            <a href="{% url 'crear_autor' %}">Nuevo Autor</a> |
+            <a href="{% url 'crear_categoria' %}">Nueva Categoría</a> |
+            <a href="{% url 'crear_posteo' %}">Nuevo Posteo</a> |
+            <a href="{% url 'buscar_posteo' %}">Buscar</a>
+        </nav>
+    </header>
+
+    <hr>
+
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+</body>
+</html>
