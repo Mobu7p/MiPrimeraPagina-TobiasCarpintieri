@@ -1,29 +1,25 @@
 {% extends 'blog/base.html' %}
 
-{% block content %}
-<h2>Buscar Posteos</h2>
+{% block contenido %}
+  <h2>Buscar Posteos</h2>
 
-<form method="get" action="{% url 'buscar_posteo' %}">
-    <input type="text" name="q" placeholder="Buscar..." value="{{ query }}">
+  <form method="GET" action="{% url 'buscar_posteo' %}">
+    <input type="text" name="q" placeholder="Buscar...">
     <button type="submit">Buscar</button>
-</form>
+  </form>
 
-<hr>
+  <hr>
 
-{% if resultados %}
-  <ul>
+  {% if resultados %}
+    <h3>Resultados:</h3>
     {% for posteo in resultados %}
-      <li>
-        <strong>{{ posteo.titulo }}</strong><br>
-        Autor: {{ posteo.autor.nombre }}<br>
-        Categoría: {{ posteo.categoria.nombre }}<br>
-        Fecha: {{ posteo.fecha|date:"d/m/Y H:i" }}<br>
-        {{ posteo.contenido|linebreaks }}
-      </li>
+      <div>
+        <h4>{{ posteo.titulo }}</h4>
+        <a href="{% url 'detalle_posteo' posteo.pk %}">Ver posteo</a>
+      </div>
     {% endfor %}
-  </ul>
-{% else %}
-  <p>No se encontraron resultados para "{{ query }}".</p>
-{% endif %}
-{% endblock %}
+  {% else %}
+    <p>No se encontraron resultados para tu búsqueda.</p>
+  {% endif %}
 
+{% endblock %}

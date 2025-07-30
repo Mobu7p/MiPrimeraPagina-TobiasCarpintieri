@@ -11,4 +11,6 @@ urlpatterns = [
     path('posteo/<int:pk>/', DetallePosteoView.as_view(), name='detalle_posteo'),
     path('posteo/<int:pk>/editar/', EditarPosteoView.as_view(), name='editar_posteo'),
     path('posteo/<int:pk>/borrar/', views.borrar_posteo, name='borrar_posteo'),
+    path('acerca-de-mi/', views.acerca_de_mi, name='acerca_de_mi'),
+    
 ]

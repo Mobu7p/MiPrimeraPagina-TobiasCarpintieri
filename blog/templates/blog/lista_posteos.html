@@ -1,20 +1,19 @@
-{% block content %}
-<h2>Lista de Posteos</h2>
+{% extends 'blog/base.html' %}
 
-<ul>
-  {% for posteo in posteos %}
-    <li>
-      <strong>{{ posteo.titulo }}</strong><br>
-      Autor: {{ posteo.autor.nombre }}<br>
-      Categoría: {{ posteo.categoria.nombre }}<br>
-      Fecha: {{ posteo.fecha|date:"d/m/Y H:i" }}<br>
-      {{ posteo.contenido|linebreaks }}<br>
-      {% if posteo.imagen %}
-        <img src="{{ posteo.imagen.url }}" alt="Imagen" width="300">
-      {% endif %}
-    </li>
-  {% empty %}
-    <li>No hay posteos aún.</li>
-  {% endfor %}
-</ul>
+{% block content %}
+  <h2>Lista de Posteos</h2>
+
+  {% if posteos %}
+    {% for posteo in posteos %}
+      <div>
+        <h3>{{ posteo.titulo }}</h3>
+        <p>{{ posteo.contenido|truncatewords:30 }}</p>
+        <a href="{% url 'detalle_posteo' posteo.pk %}">Leer más</a>
+      </div>
+      <hr>
+    {% endfor %}
+  {% else %}
+    <p>No hay posteos disponibles.</p>
+  {% endif %}
+
 {% endblock %}

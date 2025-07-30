@@ -76,3 +76,18 @@ def borrar_posteo(request, pk):
         return redirect('lista_posteos')
     return render(request, 'blog/confirmar_borrado.html', {'posteo': posteo})
 
+def acerca_de_mi(request):
+    return render(request, 'blog/acerca_de_mi.html')
+
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def crear_posteo(request):
+    if request.method == 'POST':
+        form = PosteoForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_posteos')
+    else:
+        form = PosteoForm()
+    return render(request, 'blog/formulario.html', {'form': form, 'titulo': 'Crear Posteo'})

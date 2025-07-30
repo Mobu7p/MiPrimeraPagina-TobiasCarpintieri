@@ -14,7 +14,14 @@
             <a href="{% url 'crear_autor' %}">Nuevo Autor</a> |
             <a href="{% url 'crear_categoria' %}">Nueva Categoría</a> |
             <a href="{% url 'crear_posteo' %}">Nuevo Posteo</a> |
-            <a href="{% url 'buscar_posteo' %}">Buscar</a>
+            <a href="{% url 'buscar_posteo' %}">Buscar</a> |
+            {% if user.is_authenticated %}
+                Hola, {{ user.username }} |
+                <a href="{% url 'logout' %}">Salir</a>
+            {% else %}
+                <a href="{% url 'login' %}">Login</a> |
+                <a href="{% url 'registro' %}">Registro</a>
+            {% endif %}
         </nav>
     </header>
 
