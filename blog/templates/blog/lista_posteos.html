@@ -1,5 +1,3 @@
-{% extends 'blog/base.html' %}
-
 {% block content %}
 <h2>Lista de Posteos</h2>
 
@@ -10,7 +8,10 @@
       Autor: {{ posteo.autor.nombre }}<br>
       Categoría: {{ posteo.categoria.nombre }}<br>
       Fecha: {{ posteo.fecha|date:"d/m/Y H:i" }}<br>
-      {{ posteo.contenido|linebreaks }}
+      {{ posteo.contenido|linebreaks }}<br>
+      {% if posteo.imagen %}
+        <img src="{{ posteo.imagen.url }}" alt="Imagen" width="300">
+      {% endif %}
     </li>
   {% empty %}
     <li>No hay posteos aún.</li>

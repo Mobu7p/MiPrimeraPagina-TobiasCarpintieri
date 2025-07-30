@@ -10,17 +10,20 @@
 
 <hr>
 
-<ul>
+{% if resultados %}
+  <ul>
     {% for posteo in resultados %}
-        <li>
-            <strong>{{ posteo.titulo }}</strong><br>
-            Autor: {{ posteo.autor.nombre }}<br>
-            Categoría: {{ posteo.categoria.nombre }}<br>
-            Fecha: {{ posteo.fecha|date:"d/m/Y H:i" }}<br>
-            {{ posteo.contenido|linebreaks }}
-        </li>
-    {% empty %}
-        <li>No se encontraron resultados.</li>
+      <li>
+        <strong>{{ posteo.titulo }}</strong><br>
+        Autor: {{ posteo.autor.nombre }}<br>
+        Categoría: {{ posteo.categoria.nombre }}<br>
+        Fecha: {{ posteo.fecha|date:"d/m/Y H:i" }}<br>
+        {{ posteo.contenido|linebreaks }}
+      </li>
     {% endfor %}
-</ul>
+  </ul>
+{% else %}
+  <p>No se encontraron resultados para "{{ query }}".</p>
+{% endif %}
 {% endblock %}
+

@@ -22,6 +22,7 @@ class Posteo(models.Model):
     fecha = models.DateTimeField(auto_now_add=True)
     autor = models.ForeignKey(Autor, on_delete=models.CASCADE)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
+    imagen = models.ImageField(upload_to='posteos/', null=True, blank=True)
 
     def __str__(self):
         return self.titulo

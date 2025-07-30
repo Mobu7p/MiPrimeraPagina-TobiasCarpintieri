@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<h2>{{ posteo.titulo }}</h2>
+<p><strong>Autor:</strong> {{ posteo.autor.nombre }}</p>
+<p><strong>Categoría:</strong> {{ posteo.categoria.nombre }}</p>
+<p><strong>Fecha:</strong> {{ posteo.fecha|date:"d/m/Y H:i" }}</p>
+{% if posteo.imagen %}
+  <img src="{{ posteo.imagen.url }}" alt="Imagen" width="400">
+{% endif %}
+<p>{{ posteo.contenido|linebreaks }}</p>
+
+<a href="{% url 'editar_posteo' posteo.pk %}">Editar</a> |
+<a href="{% url 'borrar_posteo' posteo.pk %}">Borrar</a> |
+<a href="{% url 'lista_posteos' %}">Volver a la lista</a>
+{% endblock %}

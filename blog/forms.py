@@ -14,4 +14,5 @@ class CategoriaForm(forms.ModelForm):
 class PosteoForm(forms.ModelForm):
     class Meta:
         model = Posteo
-        fields = ['titulo', 'contenido', 'autor', 'categoria']
+        fields = ['titulo', 'contenido', 'autor', 'categoria', 'imagen']
+
