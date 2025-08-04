@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 from .views import ListaPosteosView, DetallePosteoView, EditarPosteoView
+from django.urls import path, include
+
 
 urlpatterns = [
     path('autor/nuevo/', views.crear_autor, name='crear_autor'),
@@ -12,5 +14,5 @@ urlpatterns = [
     path('posteo/<int:pk>/editar/', EditarPosteoView.as_view(), name='editar_posteo'),
     path('posteo/<int:pk>/borrar/', views.borrar_posteo, name='borrar_posteo'),
     path('acerca-de-mi/', views.acerca_de_mi, name='acerca_de_mi'),
-    
+    path('usuarios/', include('usuarios.urls')),
 ]

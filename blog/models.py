@@ -19,10 +19,11 @@ class Categoria(models.Model):
 class Posteo(models.Model):
     titulo = models.CharField(max_length=200)
     contenido = models.TextField()
-    fecha = models.DateTimeField(auto_now_add=True)
-    autor = models.ForeignKey(Autor, on_delete=models.CASCADE)
-    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
-    imagen = models.ImageField(upload_to='posteos/', null=True, blank=True)
+    autor = models.ForeignKey('Autor', on_delete=models.CASCADE)
+    categoria = models.ForeignKey('Categoria', on_delete=models.SET_NULL, null=True)
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+    imagen = models.ImageField(upload_to='posteos/', null=True, blank=True)  # NUEVO
 
     def __str__(self):
         return self.titulo
+
