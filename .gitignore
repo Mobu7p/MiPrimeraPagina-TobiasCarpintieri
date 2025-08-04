@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.log
+
+# Entornos virtuales
+venv/
+env/
+ENV/
+.venv/
+.ENV/
+
+# Archivos de usuario de VSCode
+.vscode/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos compilados o temporales
+*.pot
+*.pyc
+
+# Archivos de configuración ocultos
+*.env
+*.secret
+
+# Django
+db.sqlite3
+staticfiles/
