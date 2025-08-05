@@ -1,36 +1,39 @@
-#   MiPrimeraPagina-Carpintieri
+# MiPrimeraPagina-Carpintieri
 
 Este es un proyecto web hecho con Django que tiene:
 
-- Herencia de plantillas para organizar el diseño.  
-- Tres modelos: Autor, Categoría y Posteo.  
-- Formularios para crear datos en cada modelo.  
-- Lista de posteos con búsqueda por título o contenido.  
+Herencia de plantillas para organizar el diseño.
 
-## Cómo instalar y correr el proyecto
+Tres modelos: Autor, Categoría y Posteo.
 
-1. Clonar o descargar este repositorio.  
+Formularios para crear datos en cada modelo.
 
-2. Crear y activar un entorno virtual con Python:  
-   ```bash
-   python -m venv venv
-   source venv/Scripts/activate
+Lista de posteos con búsqueda por título o contenido.
 
-3. Instalar las dependencias:
+# Cómo instalar y correr el proyecto
 
+1. 
+Clonar o descargar este repositorio.
+
+2.
+Crear y activar un entorno virtual con Python:
+python -m venv venv
+source venv/Scripts/activate
+
+3.
+Instalar las dependencias:
 pip install -r requirements.txt
 
-4. Aplicar las migraciones para crear la base de datos:
-
+4.
+Aplicar las migraciones para crear la base de datos:
 python manage.py makemigrations
 python manage.py migrate
 
-5. Ejecutar el servidor local:
-
+5.
+Ejecutar el servidor local:
 python manage.py runserver
 
 # Uso de la web
-
 Para crear un autor: ir a /autor/nuevo/
 Para crear una categoría: ir a /categoria/nuevo/
 Para crear un posteo: ir a /posteo/nuevo/
@@ -43,3 +46,4 @@ blog/ — app con modelos, vistas, formularios y plantillas.
 templates/blog/ — archivos HTML.
 .gitignore — para ignorar archivos innecesarios.
 requirements.txt — listado de dependencias Python.
+
