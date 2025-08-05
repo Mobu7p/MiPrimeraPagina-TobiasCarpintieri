@@ -40,7 +40,7 @@ def crear_posteo(request):
 
 class ListaPosteosView(ListView):
     model = Posteo
-    template_name = 'blog/lista_posteos.html'   # <--- corregido acá
+    template_name = 'blog/lista_posteos.html' 
     context_object_name = 'posteos'
     ordering = ['-fecha_creacion']
 
