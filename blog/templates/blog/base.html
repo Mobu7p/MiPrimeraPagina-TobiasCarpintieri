@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Twother{% endblock %}</title>
-    {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="icon" href="{% static 'icon/twother.ico' %}" type="image/x-icon">
 </head>
@@ -12,18 +11,26 @@
 <body>
 
     <header>
-        <nav>
-            <a href="{% url 'lista_posteos' %}">Inicio</a> |
-            <a href="{% url 'crear_categoria' %}">Nueva Categoría</a> |
-            <a href="{% url 'crear_posteo' %}">Nuevo Posteo</a> |
-            <a href="{% url 'buscar_posteo' %}">Buscar</a> |
-            {% if user.is_authenticated %}
-                Hola, {{ user.username }} |
-                <a href="{% url 'logout' %}">Salir</a>
-            {% else %}
-                <a href="{% url 'login' %}">Login</a> |
-                <a href="{% url 'registro' %}">Registro</a>
-            {% endif %}
+        <nav class="navbar">
+            <div class="nav-left">
+                <a href="{% url 'lista_posteos' %}">Inicio</a> |
+                <a href="{% url 'crear_categoria' %}">Nueva Categoría</a> |
+                <a href="{% url 'crear_posteo' %}">Nuevo Posteo</a> |
+                <a href="{% url 'buscar_posteo' %}">Buscar</a> |
+                {% if user.is_authenticated %}
+                    Hola, {{ user.username }} |
+                    <a href="{% url 'logout' %}">Salir</a>
+                {% else %}
+                    <a href="{% url 'login' %}">Login</a> |
+                    <a href="{% url 'registro' %}">Registro</a>
+                {% endif %}
+            </div>
+
+            <div class="nav-right">
+                <a href="{% url 'lista_posteos' %}" title="Volver al inicio">
+                    <img src="{% static 'icon/twother45.ico' %}" alt="Twother Logo" class="logo-icon">
+                </a>
+            </div>
         </nav>
     </header>
 
