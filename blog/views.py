@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import AutorForm, CategoriaForm, PosteoForm
+from .forms import CategoriaForm, PosteoForm
 from .models import Posteo
 from django.views.generic import ListView, DetailView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -7,16 +7,7 @@ from django.urls import reverse_lazy
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 
-def crear_autor(request):
-    if request.method == 'POST':
-        form = AutorForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('lista_posteos')
-    else:
-        form = AutorForm()
-    return render(request, 'blog/formulario.html', {'form': form, 'titulo': 'Nuevo Autor'})
-
+@login_required
 def crear_categoria(request):
     if request.method == 'POST':
         form = CategoriaForm(request.POST)
@@ -32,7 +23,9 @@ def crear_posteo(request):
     if request.method == 'POST':
         form = PosteoForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            posteo = form.save(commit=False)
+            posteo.autor = request.user
+            posteo.save()
             return redirect('lista_posteos')
     else:
         form = PosteoForm()
@@ -50,7 +43,7 @@ def buscar_posteo(request):
     if query:
         resultados = Posteo.objects.filter(
             Q(titulo__icontains=query) | Q(contenido__icontains=query)
-        ).order_by('-fecha')
+        ).order_by('-fecha_creacion')
     return render(request, 'blog/buscar.html', {'resultados': resultados, 'query': query})
 
 class DetallePosteoView(LoginRequiredMixin, DetailView):

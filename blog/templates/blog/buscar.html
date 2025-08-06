@@ -1,6 +1,6 @@
 {% extends 'blog/base.html' %}
 
-{% block contenido %}
+{% block content %}
   <h2>Buscar Posteos</h2>
 
   <form method="GET" action="{% url 'buscar_posteo' %}">
@@ -10,6 +10,7 @@
 
   <hr>
 
+{% if query %}
   {% if resultados %}
     <h3>Resultados:</h3>
     {% for posteo in resultados %}
@@ -21,5 +22,7 @@
   {% else %}
     <p>No se encontraron resultados para tu búsqueda.</p>
   {% endif %}
+{% endif %}
+
 
 {% endblock %}

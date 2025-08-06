@@ -7,7 +7,7 @@
     {% for posteo in posteos %}
       <div>
         <h3>{{ posteo.titulo }}</h3>
-        <p><strong>Fecha:</strong> {{ posteo.fecha_creacion|date:"d/m/Y H:i" }}</p>
+        <p><strong>Fecha:</strong> {{ posteo.fecha_creacion|date:"d/m/Y" }}</p>
         <p>{{ posteo.contenido|truncatewords:30 }}</p>
         <a href="{% url 'detalle_posteo' posteo.pk %}">Leer más</a>
       </div>

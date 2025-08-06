@@ -2,7 +2,7 @@
 
 {% block content %}
 <h2>{{ posteo.titulo }}</h2>
-<p><strong>Autor:</strong> {{ posteo.autor.nombre }}</p>
+<p><strong>Autor:</strong> {{ posteo.autor.username }}</p>
 <p><strong>Categoría:</strong> {{ posteo.categoria.nombre }}</p>
 <p><strong>Fecha:</strong> {{ posteo.fecha|date:"d/m/Y H:i" }}</p>
 {% if posteo.imagen %}
