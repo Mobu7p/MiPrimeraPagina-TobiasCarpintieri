@@ -19,7 +19,10 @@
                 <a href="{% url 'buscar_posteo' %}">Buscar</a> |
                 {% if user.is_authenticated %}
                     Hola, {{ user.username }} |
-                    <a href="{% url 'logout' %}">Salir</a>
+                    <form method="post" action="{% url 'logout' %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" style="background:none; border:none; color:inherit; cursor:pointer; padding:0;">Salir</button>
+                    </form>
                 {% else %}
                     <a href="{% url 'login' %}">Login</a> |
                     <a href="{% url 'registro' %}">Registro</a>

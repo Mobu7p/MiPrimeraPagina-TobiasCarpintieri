@@ -4,7 +4,7 @@
 <h2>{{ posteo.titulo }}</h2>
 <p><strong>Autor:</strong> {{ posteo.autor.username }}</p>
 <p><strong>Categoría:</strong> {{ posteo.categoria.nombre }}</p>
-<p><strong>Fecha:</strong> {{ posteo.fecha|date:"d/m/Y H:i" }}</p>
+<p><strong>Fecha:</strong> {{ posteo.fecha_creacion|date:"d/m/Y" }}</p>
 {% if posteo.imagen %}
   <img src="{{ posteo.imagen.url }}" alt="Imagen" width="400">
 {% endif %}
